@@ -13,6 +13,8 @@ from pytz import UTC
 from dateutil.parser import parse
 from six import iteritems, binary_type, text_type, integer_types, PY2
 
+import sys
+
 EPOCH = UTC.localize(datetime.utcfromtimestamp(0))
 
 
@@ -169,4 +171,15 @@ def make_lines(data, precision=None):
         line = ' '.join(elements)
         lines.append(line)
 
-    return '\n'.join(lines) + '\n'
+    ret = '\n'.join(lines) + '\n'
+
+    print('', file=sys.stderr)
+    print('LINES ARE', file=sys.stderr)
+    print(lines, file=sys.stderr)
+    print('', file=sys.stderr)
+    print('MAKE LINES', file=sys.stderr)
+    print(ret)
+    print('', file=sys.stderr)
+
+
+    return ret
