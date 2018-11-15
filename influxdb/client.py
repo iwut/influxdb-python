@@ -21,6 +21,7 @@ from influxdb.resultset import ResultSet
 from .exceptions import InfluxDBClientError
 from .exceptions import InfluxDBServerError
 
+import sys
 
 class InfluxDBClient(object):
     """InfluxDBClient primary client object to connect InfluxDB.
@@ -317,6 +318,11 @@ class InfluxDBClient(object):
             if isinstance(data, str):
                 data = [data]
             data = ('\n'.join(data) + '\n').encode('utf-8')
+
+        print('', file=sys.stderr)
+        print('DATA IS', file=sys.stderr)
+        print(data)
+        print('', file=sys.stderr)
 
         self.request(
             url="write",
